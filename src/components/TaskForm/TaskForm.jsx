@@ -1,10 +1,14 @@
+import { useDispatch } from "react-redux";
 import { Button } from "../Button/Button";
 import css from "./TaskForm.module.css";
+import { addTask } from "../../redux/tasks/actions";
 
 export const TaskForm = () => {
+  const dispach = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
+    dispach(addTask(form.elements.text.value));
     form.reset();
   };
 
